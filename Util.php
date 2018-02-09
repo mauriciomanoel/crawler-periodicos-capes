@@ -206,11 +206,13 @@ class Util {
             $string = rtrim(trim($string), ",");
             $string .= "\n";
         } else {
+
             foreach($data as $key => $value) {
                 $string .= "" . $key . " = " . $delimiter . $value . $delimiter . "," . "\n";
-            }
+            }            
             $string = rtrim(trim($string), ",");
             $string .= "\n";
+
         }
         $bibtex = trim(substr($bibtex, 0, -1));        
         if ( substr($bibtex, strlen($bibtex)-1) == ",") {
