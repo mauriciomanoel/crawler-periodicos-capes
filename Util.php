@@ -184,5 +184,62 @@ class Util {
         
         return $dom;
     }
+
+    public static function getURLFromHTML($html) {
+        preg_match_all('/href="([^"]+)"/', $html, $arr, PREG_PATTERN_ORDER);
+        if (!empty($arr[1])) {
+            return $arr[1][0];
+        }
+        return "";
+    }
+
+    function add_fields_bibtex($bibtex, $data) 
+    {
+        $bibtex = trim($bibtex);
+        $string = "";
+        $delimiter = self::getDelimiter($bibtex);
+       
+        if ($delimiter == "{") {
+            foreach($data as $key => $value) {
+                $string .= "" . $key . " = {" . $value . "}," . "\n";
+            }
+            $string = rtrim(trim($string), ",");
+            $string .= "\n";
+        } else {
+            foreach($data as $key => $value) {
+                $string .= "" . $key . " = " . $delimiter . $value . $delimiter . "," . "\n";
+            }
+            $string = rtrim(trim($string), ",");
+            $string .= "\n";
+        }
+        $bibtex = trim(substr($bibtex, 0, -1));        
+        if ( substr($bibtex, strlen($bibtex)-1) == ",") {
+            $bibtex .= "\n";
+        } else {
+            $bibtex .= ",\n";
+        }
+        $bibtex .= "" . $string;
+        $bibtex .= "}\n";
+
+        return $bibtex;
+    }
+
+    function arrayToString($value) {
+        return implode(" ", $value);
+    }
+
+	function getDelimiter($string)
+	{
+        $string = trim($string);
+        $string = str_replace(array(" ","\n"), "", $string);
+        $position = strpos($string, "=");
+        return substr($string, ($position+1), 1);
+    }
+    
+    public static function showMessage($message) {
+        while (@ ob_end_flush()); // end all output buffers if any
+            echo $message . BREACK_LINE;
+        @ flush();
+    }
 }
 ?>
