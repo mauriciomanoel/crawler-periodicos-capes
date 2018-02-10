@@ -6,9 +6,7 @@ An easy way to save your articles in bibtex format from the "Portal Periodicos C
 
 ### Prerequisite
 
-`PHP` is required, see [here](http://php.net/downloads.php).
-
-`Web Server` is optional, see [here](https://www.apachefriends.org/download.html).
+`Web Server with PHP` is required, see [here](https://www.apachefriends.org/download.html).
 
 ## Quick Start
 
@@ -27,20 +25,8 @@ Clone the code repositories
 ```
 http://my-server/crawler-periodicos-capes/get_bibtex.php?page=NUMBER_PAGE&query=QUERY_STRING
 
-E.g. http://my-server/crawler-periodicos-capes/get_bibtex.php?page=0&query="Internet of medical things"
-```
-
-## Command Line
-```
-php get_bibtex_from_google.php NUMBER_PAGE \"QUERY_STRING\"
-
-QUERY_STRING = "Internet of medical things"
-
-E.g. php get_bibtex.php 0 \""Internet of medical things"\"
-
-QUERY_STRING = ("Internet of things") and medical
-
-E.g. php get_bibtex.php 0 \"("Internet of things") and medical\"
+E.g. http://my-server/crawler-periodicos-capes/get_bibtex.php?page=1&query="Internet of medical things"
+E.g. http://my-server/crawler-periodicos-capes/get_bibtex.php?page=1&query=("healthcare IoT" OR "health IoT" OR "healthIoT")
 ```
 
 I hope I've helped
