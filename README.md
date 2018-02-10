@@ -8,7 +8,7 @@ An easy way to save your articles in bibtex format from the "Portal Periodicos C
 
 `PHP` is required, see [here](http://php.net/downloads.php).
 
-`Web Server with PHP` is required, see [here](https://www.apachefriends.org/download.html).
+`Web Server` is optional, see [here](https://www.apachefriends.org/download.html).
 
 ## Quick Start
 
@@ -37,3 +37,4 @@ php get_bibtex_from_google.php NUMBER_PAGE QUERY_STRING
 E.g. php get_bibtex_from_google.php 0 "Internet of medical things"
 ```
 
+I hope I helped you
