@@ -18,6 +18,12 @@ class PeriodicoCapes {
         return $url;
     }
 
+    public static function start($page, $query_string, $url, $file) {
+        echo "Page: " . $page . BREAK_LINE;
+        $url = self::getUrl($page, $query_string);
+        self::progress($url, $file);
+    }
+
     public static function progress($url, $file) {
         
         $html = Util::loadURL($url, COOKIE, USER_AGENT);
@@ -67,6 +73,8 @@ class PeriodicoCapes {
             $oldContent = @file_get_contents($file);
             $newContent = $oldContent . $bibtex_new;
             file_put_contents($file, $newContent);
+            Util::showMessage("File $file saved successfully.");
+            Util::showMessage("");
         }
     }
 
@@ -90,7 +98,9 @@ class PeriodicoCapes {
     private static function getBibtex($doc) {
         $fields = array("Button"=>"OK", "encode"=>"UTF-8");
         $url = self::$URL . "primo_library/libweb/action/PushToAction.do?indx=1&doc=" . $doc . "&recId=" . $doc . "&docs=" . $doc . "&pushToType=BibTeXPushTo&fromEshelf=false";
-        return Util::loadURL($url, COOKIE, USER_AGENT, $fields);
+        $bibtex = Util::loadURL($url, COOKIE, USER_AGENT, $fields);
+        $bibtex = strip_tags($bibtex); // remove html tags 
+        return $bibtex;        
     }
 }
     
