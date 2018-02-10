@@ -19,14 +19,12 @@ class PeriodicoCapes {
     }
 
     public static function progress($url, $file) {
-        // $parameters["referer"]  = $url;
-        // $parameters["host"]     = "scholar.google.com.br";
+        
         $html = Util::loadURL($url, COOKIE, USER_AGENT);
-        // $html = file_get_contents('base.html');
         
         // Check Google Captcha
         if ( strpos($html, "gs_captcha_cb()") !== false || strpos($html, "sending automated queries") !== false ) {
-            echo "Captha detected" . $break_line; exit;
+            echo "Captha detected" . BREAK_LINE; exit;
         }
 
         // $classname = "EXLResult EXLResultMediaTYPE";
@@ -49,7 +47,7 @@ class PeriodicoCapes {
             $bibtex      = self::getBibtex($doc);
             if (empty($bibtex)) {                    
                 Util::showMessage("It was not possible download bibtex file.");
-                sleep(rand(2,4)); // rand between 3 and 6 seconds
+                sleep(rand(2,4)); // rand between 2 and 4 seconds
                 continue;
             }
 
@@ -62,7 +60,7 @@ class PeriodicoCapes {
             
             Util::showMessage("Download bibtex file OK.");
             Util::showMessage("");
-            sleep(rand(2,4)); // rand between 3 and 6 seconds
+            sleep(rand(2,4)); // rand between 2 and 4 seconds
         }
 
         if (!empty($bibtex_new)) {

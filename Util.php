@@ -240,7 +240,7 @@ class Util {
     
     public static function showMessage($message) {
         while (@ ob_end_flush()); // end all output buffers if any
-            echo $message . BREACK_LINE;
+            echo $message . BREAK_LINE;
         @ flush();
     }
 }
