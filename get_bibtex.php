@@ -35,7 +35,7 @@
         define('FILE', $file);
         define('BREAK_LINE', $break_line);
 
-        echo "Page: " . $page . BREACK_LINE;
+        echo "Page: " . $page . BREAK_LINE;
         $url = PeriodicoCapes::getUrl($page, $query_string);
         PeriodicoCapes::progress($url, $file);
     } catch(Exception $e) {
