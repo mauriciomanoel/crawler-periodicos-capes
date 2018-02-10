@@ -22,12 +22,12 @@ Clone the code repositories
 
 
 ## Web Server
-http://my-server/crawler-periodicos-capes/get_bibtex.php?page=`NUMBER PAGE`&query=`QUERY STRING`
+http://my-server/crawler-periodicos-capes/get_bibtex.php?page=`NUMBER_PAGE`&query=`QUERY_STRING`
 
 E.g. http://my-server/crawler-periodicos-capes/get_bibtex.php?page=`0`&query=`"Internet of medical things"`
 
 ## Command Line
-php get_bibtex_from_google.php `NUMBER PAGE` `QUERY STRING`
+php get_bibtex_from_google.php `NUMBER_PAGE` `QUERY_STRING`
 
 E.g. php get_bibtex_from_google.php `0` `"Internet of medical things"`
 
