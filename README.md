@@ -37,4 +37,4 @@ php get_bibtex_from_google.php NUMBER_PAGE QUERY_STRING
 E.g. php get_bibtex_from_google.php 0 "Internet of medical things"
 ```
 
-I hope I helped you
+I hope I've helped
