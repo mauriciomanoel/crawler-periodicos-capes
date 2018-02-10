@@ -32,9 +32,15 @@ E.g. http://my-server/crawler-periodicos-capes/get_bibtex.php?page=0&query="Inte
 
 ## Command Line
 ```
-php get_bibtex_from_google.php NUMBER_PAGE QUERY_STRING
+php get_bibtex_from_google.php NUMBER_PAGE \"QUERY_STRING\"
 
-E.g. php get_bibtex_from_google.php 0 "Internet of medical things"
+QUERY_STRING = "Internet of medical things"
+
+E.g. php get_bibtex.php 0 \""Internet of medical things"\"
+
+QUERY_STRING = ("Internet of things") and medical
+
+E.g. php get_bibtex.php 0 \"("Internet of things") and medical\"
 ```
 
 I hope I've helped
