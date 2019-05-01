@@ -32,6 +32,7 @@
             throw new Exception("Only one parameter: page or pages");
         }
         
+        $file_name      = substr($file_name, 0, 30) . " " . time();
         $file           = Util::slug(trim($file_name)) . ".bib";
         $url            = PeriodicoCapes::getUrl(0, $query_string);
         $cookie         = Util::getCookie($url);

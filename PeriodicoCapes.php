@@ -1,7 +1,7 @@
 <?php
 
 class PeriodicoCapes {
-    private static $URL = 'http://rnp-primo.hosted.exlibrisgroup.com/';
+    private static $URL = 'https://rnp-primo.hosted.exlibrisgroup.com/';
 
     public static function getUrl($page, $query) 
     {
@@ -97,7 +97,7 @@ class PeriodicoCapes {
         
     private static function getBibtex($doc) {
         $fields = array("Button"=>"OK", "encode"=>"UTF-8");
-        $url = self::$URL . "primo_library/libweb/action/PushToAction.do?indx=1&doc=" . $doc . "&recId=" . $doc . "&docs=" . $doc . "&pushToType=BibTeXPushTo&fromEshelf=false";
+        $url = self::$URL . "primo_library/libweb/action/PushToAction.do?pushToType=BibTeXPushTo&fromBasket=true&docs=" . $doc;
         $bibtex = Util::loadURL($url, COOKIE, USER_AGENT, $fields);
         $bibtex = strip_tags($bibtex); // remove html tags 
         return $bibtex;        
