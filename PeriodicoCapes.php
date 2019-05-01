@@ -51,7 +51,7 @@ class PeriodicoCapes {
             
             Util::showMessage($title["title"]);
             $bibtex      = self::getBibtex($doc);
-            if (empty($bibtex)) {                    
+            if (empty($bibtex) || trim($bibtex{0}) != "@") {                    
                 Util::showMessage("It was not possible download bibtex file.");
                 sleep(rand(2,4)); // rand between 2 and 4 seconds
                 continue;
