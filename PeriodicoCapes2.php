@@ -1,7 +1,7 @@
 <?php
 
 class PeriodicoCapes {
-    private static $URL = 'https://rnp-primo.hosted.exlibrisgroup.com/';
+    private static $URL = 'http://rnp-primo.hosted.exlibrisgroup.com/';
 
     public static function getUrl($page, $query) 
     {
@@ -51,7 +51,7 @@ class PeriodicoCapes {
             
             Util::showMessage($title["title"]);
             $bibtex      = self::getBibtex($doc);
-            if (empty($bibtex) || $bibtex{0} != "@") {                    
+            if (empty($bibtex)) {                    
                 Util::showMessage("It was not possible download bibtex file.");
                 sleep(rand(2,4)); // rand between 2 and 4 seconds
                 continue;
@@ -66,9 +66,7 @@ class PeriodicoCapes {
             
             Util::showMessage("Download bibtex file OK.");
             Util::showMessage("");
-            $rand = rand(2,4);
-            sleep($rand); // rand between 2 and 4 seconds
-            Util::showMessage("Wait for $rand seconds next call");
+            sleep(rand(2,4)); // rand between 2 and 4 seconds
         }
 
         if (!empty($bibtex_new)) {
@@ -99,7 +97,7 @@ class PeriodicoCapes {
         
     private static function getBibtex($doc) {
         $fields = array("Button"=>"OK", "encode"=>"UTF-8");
-        $url = self::$URL . "primo_library/libweb/action/PushToAction.do?indx=1&doc=" . $doc . "&recId=" . $doc . "&docs=" . $doc . "&pushToType=BibTeXPushTo&fromEshelf=true";
+        $url = self::$URL . "primo_library/libweb/action/PushToAction.do?indx=1&doc=" . $doc . "&recId=" . $doc . "&docs=" . $doc . "&pushToType=BibTeXPushTo&fromEshelf=false";
         $bibtex = Util::loadURL($url, COOKIE, USER_AGENT, $fields);
         $bibtex = strip_tags($bibtex); // remove html tags 
         return $bibtex;        
