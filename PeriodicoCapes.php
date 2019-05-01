@@ -54,7 +54,12 @@ class PeriodicoCapes {
             if (empty($bibtex) || trim($bibtex{0}) != "@") {                    
                 Util::showMessage("It was not possible download bibtex file.");
                 sleep(rand(2,4)); // rand between 2 and 4 seconds
-                continue;
+                Util::showMessage("New call");
+                $bibtex      = self::getBibtex($doc);
+                if (empty($bibtex) || trim($bibtex{0}) != "@") {                    
+                    Util::showMessage("It was not possible download bibtex file.");
+                    continue;
+                }
             }
 
             if (!empty($title["url_article"])) {
@@ -98,10 +103,14 @@ class PeriodicoCapes {
     private static function getBibtex($doc) {
         $fields = array("Button"=>"OK", "encode"=>"UTF-8");
         $url = self::$URL . "primo_library/libweb/action/PushToAction.do?pushToType=BibTeXPushTo&fromBasket=true&docs=" . $doc;
-        $bibtex = Util::loadURL($url, COOKIE, USER_AGENT, $fields);
+        //var_dump($url);
+        $parameters = array();
+        $parameters["referer"] = $url;
+        $bibtex = Util::loadURL($url, COOKIE, USER_AGENT, $fields, $parameters);
         $bibtex = strip_tags($bibtex); // remove html tags 
         return $bibtex;        
     }
 }
     
+
 ?>
