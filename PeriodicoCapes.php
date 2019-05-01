@@ -67,8 +67,9 @@ class PeriodicoCapes {
             Util::showMessage("Download bibtex file OK.");
             Util::showMessage("");
             $rand = rand(2,4);
-            sleep($rand); // rand between 2 and 4 seconds
             Util::showMessage("Wait for $rand seconds next call");
+            sleep($rand); // rand between 2 and 4 seconds
+            
         }
 
         if (!empty($bibtex_new)) {
